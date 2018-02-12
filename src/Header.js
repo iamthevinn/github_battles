@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import BattleView from './BattleView';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch
+} from 'react-router-dom'
 
 class Header extends Component {
 
@@ -11,9 +17,9 @@ class Header extends Component {
         </div>
         <div className="navigationContainer">
           <div className="navigationLinks">
-            <div className="navigationLink">Battle</div>
+            <Link to={'/'} className="navigationLink">Battle</Link>
             <div className="navigationLink">|</div>
-            <div className="navigationLink">Rankings</div>
+            <Link to={'/rankings'} className="navigationLink">Rankings</Link>
           </div>
         </div>
       </div>
