@@ -5,8 +5,16 @@ import { connect } from "react-redux";
 class UserCard extends Component {
 
   render() {
-    const player = this.props.playerNumber === 1 ? this.props.gitHubPlayer1 : this.props.gitHubPlayer2;
-    console.log(player)
+    
+    let player = this.props.playerNumber
+    console.log(this.props)
+    if (this.props.playerNumber === 1)
+      player = this.props.gitHubPlayer1
+
+
+    if (this.props.playerNumber === 2)
+      player = this.props.gitHubPlayer2
+
     return (
       <div className="card userCard">
         <div className="userCardImage">

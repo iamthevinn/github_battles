@@ -7,26 +7,30 @@ import { LOADED_USER_DATA, loadUsers } from './state/actions';
 class RankingsView extends Component {
 
   componentDidMount() {
-    console.log("Component Mounted")
     this.props.loadUsers();
   }
 
   render() {
+
+    let sortedUsers = this.props.rankedUsers.slice();
+    sortedUsers.sort(function(a, b){ return b.score - a.score })
+
     return (
       <div>
-        <div style={{fontSize: '36px'}}>Rankings</div>
-        {this.props.rankedUsers.length > 0 && (
-          <div className="card" style={{width: '100%', float: 'left'}}>
-            <div style={{width: '5%', fontSize: '36px', display: 'inline-block', verticalAlign: 'top'}} >
-              {this.props.rankedUsers[0].id}
+        <div style={{ fontSize: '36px' }}>Rankings</div>
+        {sortedUsers.map((user, index) => { console.log(user);return ( 
+          <div key={user.githubID} className="card" style={{ width: '100%', float: 'left' }}>
+            <div style={{ width: '5%', fontSize: '36px', display: 'inline-block', verticalAlign: 'top' }} >
+              {index+1}.
             </div>
-            <div style={{width: '55%', display: 'inline-block', verticalAlign: 'top'}}>
-            <UserCardWrapped playerNumber={1} />
+            <div style={{ width: '55%', display: 'inline-block', verticalAlign: 'top' }}>
+              <UserCardWrapped playerNumber={user} />
             </div>
-            <div style={{ paddingLeft: '20px', fontSize: '36px', width: '40%', display: 'inline-block', verticalAlign: 'top'}}>
-              Score: {this.props.rankedUsers[0].score}
+            <div style={{ paddingLeft: '20px', fontSize: '36px', width: '40%', display: 'inline-block', verticalAlign: 'top' }}>
+              Score: {user.score}
             </div>
           </div>
+        )}
         )}
       </div>
     )
@@ -41,7 +45,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      loadUsers: () => dispatch(loadUsers())
+    loadUsers: () => dispatch(loadUsers())
   };
 };
 
