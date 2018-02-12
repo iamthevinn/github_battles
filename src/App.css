@@ -93,3 +93,23 @@
   padding-left: 100px;
   padding-right: 100px;
 }
+
+.firstPlaceText {
+  font-size: 24px;
+  color: green;
+}
+
+.secondPlaceText {
+  font-size: 24px;
+  color: red;
+}
+
+.resetButton {
+  display:flex;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.buttonbutton {
+  width: 150px;
+}

@@ -30,7 +30,7 @@ const mapStateToUserCardProps = state => {
   };
 };
 
-const UserCardWrapped = connect(mapStateToUserCardProps)(UserCard);
+export const UserCardWrapped = connect(mapStateToUserCardProps)(UserCard);
 
 class InputCard extends Component {
   render() {

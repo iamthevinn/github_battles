@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 class BattleView extends Component {
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <div className="row battleScreen">
@@ -17,7 +18,7 @@ class BattleView extends Component {
         </div>
         {this.props.gitHubPlayer1 && this.props.gitHubPlayer2 && (
           <div className="battleButton">
-            <button className="warning" style={{width: '100%'}}>BATTLE!</button>
+            <button onClick={() => this.props.history.push("/results")} className="warning" style={{width: '100%'}}>BATTLE!</button>
           </div>
         )}
       </div>

@@ -2,6 +2,7 @@ import axios from "axios"
 
 export const REQUEST_GITHUB_USER = "REQUEST_GITHUB_USER";
 export const HANDLE_RESPONSE_FROM_GITHUB = "HANDLE_RESPONSE_FROM_GITHUB";
+export const RESET_BATTLE = "RESET_BATTLE"
 
 export function getGitHubUser(playerNumber, userName) {
     return (dispatch, getState, api) => {
