@@ -50,7 +50,7 @@ class InputCard extends Component {
             <input onChange={this.props.handleUserNameChange} style={{ fontSize: '24px' }} type="text">
             </input>
           </div>
-          <div className="small-5 medium-5 large-5 columns">
+          <div className="small-1 medium-1 large-1 columns">
             <div></div>
           </div>
         </div>

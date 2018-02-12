@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PlayerCard from './PlayerCard';
+import { connect } from "react-redux";
 
 class BattleView extends Component {
 
@@ -14,9 +15,22 @@ class BattleView extends Component {
             <PlayerCard playerNumber={2} />
           </div>
         </div>
+        {this.props.gitHubPlayer1 && this.props.gitHubPlayer2 && (
+          <div className="battleButton">
+            <button className="warning" style={{width: '100%'}}>BATTLE!</button>
+          </div>
+        )}
       </div>
     )
   }
 }
 
-export default BattleView
+const mapStateToProps = state => {
+  return {
+    gitHubPlayer1: state.gitHubPlayer1,
+    gitHubPlayer2: state.gitHubPlayer2
+  };
+};
+
+
+export default connect(mapStateToProps)(BattleView)
