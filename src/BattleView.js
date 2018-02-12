@@ -8,10 +8,10 @@ class BattleView extends Component {
       <div>
         <div className="row battleScreen">
           <div className="small-6 medium-6 large-6 columns">
-            <PlayerCard defaultPlayerName="Player 1"/>
+            <PlayerCard playerNumber={1} />
           </div>
           <div className="small-6 medium-6 large-6 columns">
-            <PlayerCard defaultPlayerName="Player 2"/>
+            <PlayerCard playerNumber={2} />
           </div>
         </div>
       </div>

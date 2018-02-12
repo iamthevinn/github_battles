@@ -1,10 +1,10 @@
 import { REQUEST_GITHUB_USER, HANDLE_RESPONSE_FROM_GITHUB } from './actions';
 
 const initialState = {
-  gitHubPlayer1Status = "",
-  gitHubPlayer2Status = "",
-  gitHubPlayer1 = undefined,
-  gitHubPlayer2 = undefined
+  gitHubPlayer1Status: "",
+  gitHubPlayer2Status: "",
+  gitHubPlayer1: undefined,
+  gitHubPlayer2: undefined
 };
 
 function reducer(state = initialState, action) {
@@ -15,7 +15,7 @@ function reducer(state = initialState, action) {
       else if (action.payload === 2)
         return { ...state, gitHubPlayer2Status: "loading" }
 
-    case REQUEST_GITHUB_USER:
+    case HANDLE_RESPONSE_FROM_GITHUB:
       if (action.payload.gitHubUser) {
         if(action.payload.playerNumber === 1)
           return { ...state, gitHubPlayer1Status: "loaded", gitHubPlayer1: action.payload.gitHubUser }
