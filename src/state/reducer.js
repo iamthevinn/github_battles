@@ -1,10 +1,11 @@
-import { REQUEST_GITHUB_USER, HANDLE_RESPONSE_FROM_GITHUB, RESET_BATTLE } from './actions';
+import { REQUEST_GITHUB_USER, HANDLE_RESPONSE_FROM_GITHUB, RESET_BATTLE, LOADED_USER_DATA } from './actions';
 
 const initialState = {
   gitHubPlayer1Status: "",
   gitHubPlayer2Status: "",
   gitHubPlayer1: undefined,
-  gitHubPlayer2: undefined
+  gitHubPlayer2: undefined,
+  rankedUsers: []
 };
 
 function reducer(state = initialState, action) {
@@ -31,6 +32,9 @@ function reducer(state = initialState, action) {
 
     case RESET_BATTLE:
       return { ...state, gitHubPlayer1Status: "", gitHubPlayer2Status: "", gitHubPlayer1: undefined, gitHubPlayer2: undefined }
+
+    case LOADED_USER_DATA:
+      return { ...state, rankedUsers: action.payload }
 
     default:
       return state;
