@@ -2,8 +2,37 @@ import React, { Component } from 'react';
 import { getGitHubUser } from './state/actions';
 import { connect } from "react-redux";
 
-class InputCard extends Component {
+class UserCard extends Component {
 
+  render() {
+    const player = this.props.playerNumber === 1 ? this.props.gitHubPlayer1 : this.props.gitHubPlayer2;
+    console.log(player)
+    return (
+      <div className="card userCard">
+        <div className="userCardImage">
+          <img className="avatarImage" src={player.avatar_url} />
+        </div>
+        <div className="nameBelowImage">
+          <div>{player.name}</div>
+        </div>
+      </div>
+    )
+  }
+}
+
+
+const mapStateToUserCardProps = state => {
+  return {
+    gitHubPlayer1Status: state.gitHubPlayer1Status,
+    gitHubPlayer2Status: state.gitHubPlayer2Status,
+    gitHubPlayer1: state.gitHubPlayer1,
+    gitHubPlayer2: state.gitHubPlayer2
+  };
+};
+
+const UserCardWrapped = connect(mapStateToUserCardProps)(UserCard);
+
+class InputCard extends Component {
   render() {
     return (
       <div className="card">
@@ -80,14 +109,14 @@ class PlayerCard extends Component {
   }
 
   render() {
-
-    console.log(this.props.playerNumber)
-
     return (
       <div>
-        {((this.props.playerNumber === 1 && !this.props.gitHubPlayer1) || (this.props.playerNumber === 2 && !this.props.gitHubPlayer2)) && (
+        {((this.props.playerNumber === 1 && !this.props.gitHubPlayer1) || (this.props.playerNumber === 2 && !this.props.gitHubPlayer2)) ? (
           <InputCardWrapped playerNumber={this.props.playerNumber} userName={this.state.userName} handleUserNameChange={this.handleUserNameChange} />
-        )}
+        ) :
+          (
+            <UserCardWrapped playerNumber={this.props.playerNumber} />
+          )}
       </div>
     )
   }
