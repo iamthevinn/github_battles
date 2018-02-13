@@ -31,16 +31,17 @@ export function loadUsers() {
 
 export function addUsers(player1, player2) {
   return (dispatch, getState, api) => {
-    axios.post('http://5a8205cc2f37a900124ecc98.mockapi.io/github_users', player1)
-      .then(({ data: users }) => {
-        console.log(users)
-        dispatch({ type: ADD_USER, payload: users })
-      })
-
-    axios.post('http://5a8205cc2f37a900124ecc98.mockapi.io/github_users', player2)
-      .then(({ data: users }) => {
-        console.log(users)
-        dispatch({ type: ADD_USER, payload: users })
-      })
+    if (player1 !== undefined) {
+      axios.post('http://5a8205cc2f37a900124ecc98.mockapi.io/github_users', player1)
+        .then(({ data: users }) => {
+          dispatch({ type: ADD_USER, payload: users })
+        })
+      }
+    if (player2 !== undefined) {
+      axios.post('http://5a8205cc2f37a900124ecc98.mockapi.io/github_users', player2)
+        .then(({ data: users }) => {
+          dispatch({ type: ADD_USER, payload: users })
+        })
+      }
   }
 }

@@ -7,7 +7,6 @@ class UserCard extends Component {
   render() {
     
     let player = this.props.playerNumber
-    console.log(this.props)
     if (this.props.playerNumber === 1)
       player = this.props.gitHubPlayer1
 

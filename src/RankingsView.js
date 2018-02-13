@@ -18,7 +18,7 @@ class RankingsView extends Component {
     return (
       <div>
         <div style={{ fontSize: '36px' }}>Rankings</div>
-        {sortedUsers.map((user, index) => { console.log(user);return ( 
+        {sortedUsers.map((user, index) => { return ( 
           <div key={user.githubID} className="card" style={{ width: '100%', float: 'left' }}>
             <div style={{ width: '5%', fontSize: '36px', display: 'inline-block', verticalAlign: 'top' }} >
               {index+1}.
